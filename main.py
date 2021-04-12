@@ -6,15 +6,8 @@ def read(file_):
         line = ' '
         while line != '':
             dish_name = f.readline().strip()
-            # print(dish_name)
-
-            # cnt_str = f.readline().strip()
-            # cnt_list = []
-            # cnt_list.append(ord(cnt_str))
-            # cnt = cnt_list[0]
             cnt = ord(f.readline()[0])
-            cnt -= 48 
-            i = 0
+            cnt -= 48
             list_of_ingridient = []
             for i in range(cnt):
                 temp_dict = {}
