@@ -30,8 +30,32 @@ def get_shop_list_by_dishes(dishes, person_count):
     return shop_list       
 
 
+def unite_files(files, unite_file):
+    with open(unite_file, 'w') as ff:
+        files_dict = {}
+        sort_list = []
+        for file in files:
+            with open(file) as f:
+                str_cnt = len(f.readlines())
+            files_dict[str_cnt] = file
+            sort_list.append(str_cnt)
+        sort_list.sort()
+        for file in sort_list:
+            ff.write(files_dict.get(file) + '\n')
+            ff.write(str(file) + '\n')
+            with open(files_dict.get(file)) as f:
+                ff.write(f.read() + '\n')
+            
+        
+
+
+
+
 cook_book = read('book.txt')
 pprint(cook_book)
 print()
+
 shop_list = get_shop_list_by_dishes(['Фахитос', 'Омлет'], 2)
 pprint(shop_list)
+
+unite_files(['1.txt', '2.txt', '3.txt'], 'final_file.txt')
